@@ -6,7 +6,7 @@ https://nhts.ornl.gov/downloads Survey Data CSV - vehpub
 https://nhts.ornl.gov/tables09/CodebookBrowser.aspx Codebook references
 
 Order of Operations:
-1. Download vehpub excel file and isolate the HHSTATE, HYBRID,	HHFAMINC,	and WTHHFIN columns into a new sheet
+1. Download vehpub excel file and isolate the HHSTATE, HYBRID,	HHFAMINC, and WTHHFIN columns into a new sheet
 2. Convert HYBRID and HHFAMINC columns into strings so they can be represented by WTHHFIN in a more digestable way with the following formulas:
   HYBRID_CALC: =IF(B2:B256116 = 1, "Hybrid", "Not Hybrid")
   INCOME_CALC: =IFS(C2:C256116 = 1, "<10k", C2:C256116 = 2, "10-15k", C2:C256116 = 3, "15-25k", C2:C256116 = 4, "25-35k", 
@@ -27,13 +27,13 @@ Conclusion: At rank 33 out of 51, Utah does not have more hybrids than at least 
 so yes higher income households own the most hybrids, yet this does not always translate on a state to state level
 
 Further Questions:
-1. What are the most common household incomes in the US?
-2. Are hybrid cars the same price in every state?
-3. Is this data being skewed by California which has over 25% of the country's hybrids?
-4. Does population density have anything to do with this? Are there more hybrids in rural vs urban areas?
+1. Are hybrid cars the same price in every state?
+2. Does population density have anything to do with this? Are there more hybrids in rural vs urban areas?
+3. What are the most common household incomes in the US?
+4. Is this data being skewed by California which has over 25% of the country's hybrids?
 
 Roadblocks:
 1. WTHHFIN column understanding and figuring out how to incorporate that
-2. Not always a clear coorelation between counts on a state level and counts on a country level
+2. Not always a clear coorelation between counts on a state level and counts on a country level, difficult to form a conclusion
 3. Tableau troubles from application to site. Income column showing numbers on application but not on site
 
