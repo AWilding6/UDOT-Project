@@ -1,0 +1,39 @@
+Question: How does Utah compare to other states based on the amount of hybrids owned and household income?
+Hypothesis: Utah will have more hybrids than at least half the country and higher income households will have more hybrids
+
+Sources: 
+https://nhts.ornl.gov/downloads Survey Data CSV - vehpub
+https://nhts.ornl.gov/tables09/CodebookBrowser.aspx Codebook references
+
+Order of Operations:
+1. Download vehpub excel file and isolate the HHSTATE, HYBRID,	HHFAMINC,	and WTHHFIN columns into a new sheet
+2. Convert HYBRID and HHFAMINC columns into strings so they can be represented by WTHHFIN in a more digestable way with the following formulas:
+  HYBRID_CALC: =IF(B2:B256116 = 1, "Hybrid", "Not Hybrid")
+  INCOME_CALC: =IFS(C2:C256116 = 1, "<10k", C2:C256116 = 2, "10-15k", C2:C256116 = 3, "15-25k", C2:C256116 = 4, "25-35k", 
+                C2:C256116 = 5, "35-50k", C2:C256116 = 6, "50-75k", C2:C256116 = 7, "75-100k", C2:C256116 = 8, "100-125k", 
+                C2:C256116 = 9, "125-150k", C2:C256116 = 10, "150-200k", C2:C256116 = 11, "200k+")
+3. Create a final excel sheet with the 4 columns renamed to State, Type, Income, and Count with the calculations for Type and Income to load into Tableau
+
+Dashboard:
+https://public.tableau.com/app/profile/andrew.wilding/viz/USHybridsandIncome/Dashboard1?publish=yes
+
+Observations:
+1. Utah ranks 33 out of 51 states (DC included) for the count of total hybrids with 0.73% of the nations hybrids
+2. In Utah, hybrids do tend to be owned by people with a higher household income with over 60% of hybrids owned by households with an income of 100k+. The most common household income being 100-125k with 32.23% of the count for the state
+3. Across the rest of the US, hybrids also tend to be owned more by houses with a higher income. The most common household income being 200k+ with 18.53% of the count for the country
+4. While 200k+ is the most common household income for hybrid owners, 50-75k, 75-100k, and 100-125k make up the large majority of hybrid owners in the US with 48.65%
+5. When comparing Utah to similar states Alabama and Nevada (states ranked 32 and 34 for total hybrid count) we see that the majority of hybrids are owned by households with an income of less than 100k
+
+Conclusion: At rank 33 out of 51, Utah does not have more hybrids than at least half of the country. The most common household income for hybrid drivers in the US is 200k+, 
+so yes higher income households own the most hybrids, yet this does not always translate on a state to state level
+
+Further Questions:
+1. What are the most common household incomes in the US and do these skew the results?
+2. Is there a political offiliation or correlation between count of hybrid cars and what color the state usually turns during elections?
+3. Is this data being skewed by California which has over 25% of the country's hybrids?
+4. Does population density have anything to do with this? Are there more hybrids in rural vs urban areas?
+
+Roadblocks:
+1. WTHHFIN column understanding and figuring out how to incorporate that
+2. Not always a clear coorelation between counts on a state level and counts on a country level
+
